@@ -1,0 +1,37 @@
+#manual scrapy 
+
+#using anaconda or miniconda
+#install those package 
+
++ Scrapy 
++ scrapy-splash
++ pymongo
++ scrapyjs
+
+#addtion program
+
+docker
+docker-compass
+aquarium
+mongdb
+studio3t
+
+# begin using start mongdb
+
+sudo service mongod start 
+
+# start docker splash
+docker run -d -p 8050:8050 --memory=4.5G --restart=always scrapinghub/splash:3.1 --maxrss 1500
+
+# add those line to setting.py
+FEED_EXPORT_ENCODING = 'utf-8'
+
+SPLASH_URL = 'http://172.17.0.1:8050'
+DOWNLOADER_MIDDLEWARES = {
+    'scrapyjs.SplashMiddleware': 725,
+}
+DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'
+
+
+
+# 
