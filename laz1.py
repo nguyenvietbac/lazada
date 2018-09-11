@@ -10,7 +10,7 @@ import pymongo
 # mycol = mydb["products"]
 
 class AutoSpider(CrawlSpider):
-	download_delay = 0.1
+	download_delay = 0.2
 	download_timeout = 30
 	name = 'laz1'
 	allowed_domains = ["lazada.vn"]
@@ -41,9 +41,9 @@ class AutoSpider(CrawlSpider):
 					request.meta['tab'] = tab
 					request.meta['item'] = links
 					yield request
-			# 		break
-			# 	break
-			# break
+					break
+				break
+			break
 
 	# def parse_laz1(self, response):
 	# 	take = response.meta['item']
@@ -84,8 +84,9 @@ class AutoSpider(CrawlSpider):
 		price = response.xpath('//span[@class=" pdp-price pdp-price_type_normal pdp-price_color_orange pdp-price_size_xl"]/text()').extract()
 		if name == [] or price == []:
 			print(tab)
-		# yield{
-		# 	'name' : name,
-		# 	'price' : price,
-		# }
+		yield{
+			'name' : name,
+			'price' : price,
+			'propeties' : tab,
+		}
 
