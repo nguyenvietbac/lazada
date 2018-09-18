@@ -37,3 +37,4 @@ DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'
 # ssh bacnv@209.97.173.50
 # user : bacnv 
 # pass : thedefinitiveguide
+# mongo --host 209.97.173.50 --port 27017 -u "admin" -p "10092018" --authenticationDatabase "admin"
