@@ -95,3 +95,4 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapyjs.SplashMiddleware': 725,
 }
 DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'
+USER_AGENT = 'APIs-Google (+https://developers.google.com/webmasters/APIs-Google.html)'
