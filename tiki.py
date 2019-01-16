@@ -55,6 +55,7 @@ class AutoSpider(CrawlSpider):
             price[x] = price[x].replace("\u00a0\u20ab", "")
             tab[1] = tab[1].replace("\n                                                    ","")
             tab[1] = tab[1].replace("                                                ","")
+            tab[1] = tab[1].replace("\u0026","")
             yield{
                 'name' : name[x],
                 'price' : price[x],
@@ -90,6 +91,7 @@ class AutoSpider(CrawlSpider):
             price[x] = price[x].replace("\u00a0\u20ab", "")
             tab[1] = tab[1].replace("\n                                                    ","")
             tab[1] = tab[1].replace("                                                ","")
+            tab[1] = tab[1].replace("\u0026","")
             yield{
                 'name' : name[x],
                 'price' : price[x],

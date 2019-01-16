@@ -13,7 +13,7 @@ import datetime
 class AutoSpider(CrawlSpider):
     download_delay = 0.5
     download_timeout = 180
-    name = 'laz1'
+    name = 'laz'
     allowed_domains = ["lazada.vn"]
     start_urls = ['https://www.lazada.vn/']
     def parse(self, response):
@@ -61,14 +61,15 @@ class AutoSpider(CrawlSpider):
             yield{
                 'name' : names[x],
                 'price' : prices[x],
-                'propeties' : tab,
+                'properties' : tab,
                 'time' : date,
                 'source' : 'lazada.vn',
+                'page' : '1'
             }        
             dic = {
                 'name' : names[x],
                 'price' : prices[x],
-                'propeties' : tab,
+                'properties' : tab,
                 'time' : date,
                 'source' : 'lazada.vn',
             }
@@ -108,37 +109,37 @@ class AutoSpider(CrawlSpider):
             yield{
                 'name' : names[x],
                 'price' : prices[x],
-                'propeties' : tab,
+                'properties' : tab,
                 'time' : date,
                 'source' : 'lazada.vn',
-                # 'page' : page - 1
+                'page' : page - 1
             }        
             dic = {
                 'name' : names[x],
                 'price' : prices[x],
-                'propeties' : tab,
+                'properties' : tab,
                 'time' : date,
                 'source' : 'lazada.vn',
             }
 
             # insert = mycol.insert_one(dic)
-            next_page = response.xpath('//li[@class=" ant-pagination-next"]').extract()
-            # if next_page == []:
-            #     next_page = response.xpath('//li[@class="ant-pagination-next"]').extract()
+        next_page = response.xpath('//li[@class=" ant-pagination-next"]').extract()
+        # if next_page == []:
+        #     next_page = response.xpath('//li[@class="ant-pagination-next"]').extract()
+    
         
-            
-            if next_page != []:
-                link = link_prev 
-                link_out = link + '?page=' + str(page)
-                request = scrapy.Request(response.urljoin(link_out), self.parse_next, meta={
-                    'splash': {
-                        'endpoint': 'render.html',
-                        'args': {'wait': 0.5}
-                    }
-                })
-                request.meta['tab'] = tab
-                request.meta['item'] = link_prev 
-                request.meta['page'] = page + 1
-                yield request
+        if next_page != []:
+            link = link_prev 
+            link_out = link + '?page=' + str(page)
+            request = scrapy.Request(response.urljoin(link_out), self.parse_next, meta={
+                'splash': {
+                    'endpoint': 'render.html',
+                    'args': {'wait': 0.5}
+                }
+            })
+            request.meta['tab'] = tab
+            request.meta['item'] = link_prev 
+            request.meta['page'] = page + 1
+            yield request
 
-            
+        

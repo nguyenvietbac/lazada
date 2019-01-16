@@ -11,7 +11,7 @@ import datetime
 class AutoSpider(CrawlSpider):
     download_delay = 0.1
     download_timeout = 30
-    name = 'ada1'
+    name = 'ada'
     allowed_domains = ["adayroi.com"]
     start_urls = ['https://www.adayroi.com']
     def parse(self, response):
@@ -75,14 +75,14 @@ class AutoSpider(CrawlSpider):
                     'name' : names[x],
                     'price' : prices[x],
                     'properties' : tab,
-                    'date' : date,
+                    'time' : date,
                     'source' : 'adayroi.com',
                 }
                 dic = {
                     'name' : names[x],
                     'price' : prices[x],
                     'properties' : tab,
-                    'date' : date,
+                    'time' : date,
                     'source' : 'adayroi.com',   
                 }
 
@@ -116,14 +116,14 @@ class AutoSpider(CrawlSpider):
                     'name' : names[x],
                     'price' : prices[x],
                     'properties' : tab,
-                    'date' : date,
+                    'time' : date,
                     'source' : 'adayroi.com',
                 }
                 dic = {
                     'name' : names[x],
                     'price' : prices[x],
                     'properties' : tab,
-                    'date' : date,
+                    'time' : date,
                     'source' : 'adayroi.com',   
                 }
 
